@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Recipe</title>
+</head>
+<body>
+<!-- Page Title -->
+<h1>Add Recipe</h1>
+
+<!-- Recipe Form -->
+<form method="post" enctype="multipart/form-data">
+  <!-- CSRF Token: This is a security measure to prevent Cross-Site Request Forgery (CSRF) attacks. -->
+  {% csrf_token %}
+
+  <!-- Form Fields: Rendering form fields using {{ form.as_p }}.
+       This will render each form field as a paragraph. You can also use other methods like {{ form.as_table }}, {{ form.as_ul }} to render them differently. -->
+  {{ form.as_p }}
+
+  <!-- Submit Button: A button to submit the form. -->
+  <button type="submit">Add Recipe</button>
+</form>
+
+</body>
+</html>

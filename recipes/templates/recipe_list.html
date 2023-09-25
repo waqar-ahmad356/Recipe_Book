@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe List</title>
+</head>
+<body>
+<h1>List of Recipes</h1>
+
+<!-- Search Form -->
+<form method="get" action="{% url 'search_recipe' %}">
+    <!-- Input for search query -->
+    <input type="text" name="q" placeholder="search...">
+    <!-- Submit button to trigger the search -->
+    <button type="submit">Search</button>
+</form>
+
+<!-- List of Recipes -->
+<ul>
+    {% for recipe in recipes %}
+    <li>
+        <!-- Recipe Title -->
+        <h2>{{ recipe.title }}</h2>
+
+        <!-- Recipe Image (if available) -->
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" width="200"><br><br>
+
+        <!-- Recipe Instructions -->
+        <strong>Recipe Instructions:</strong>
+        <p>{{ recipe.instructions }}</p>
+
+        <!-- Recipe Ingredients -->
+        <strong>Recipe Ingredients:</strong><br><br>
+        <ul>
+            {% for ingredient in recipe.ingredients.all %}
+            <!-- List each ingredient -->
+            <li>{{ ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
